@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nicolae Ungur</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@200;300;400;500;600;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+<div class="progress" aria-hidden="true"></div>
+
+<div class="wrap">
+  <nav>
+    <a class="mark" href="#top">x3rdev</a>
+    <ul>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <header class="hero" id="top">
+      <div class="name-wrap">
+        <canvas id="name" aria-hidden="true"></canvas>
+        <h1 id="nameText"><span>Nicolae</span> <span>Ungur</span></h1>
+      </div>
+      <p>CS student at the Allen School, UW. I build applications and systems: Minecraft mods, networking tools, and RL agents.</p>
+    </header>
+
+    <section id="work">
+      <div class="head"><h2>Work</h2><span class="rule"></span></div>
+      <ul class="rows">
+        <li class="row"><a href="https://github.com/x3rdev/MekanismTurrets"><h3>MekanismTurrets</h3><p>Minecraft mod and Mekanism addon that adds turrets for base defense. 9 stars, 5 forks.</p><span class="stack">Java, NeoForge</span></a></li>
+        <li class="row"><a href="https://github.com/x3rdev/openfrontmind"><h3>openfrontmind</h3><p>Deep reinforcement learning agent that plays the online game openfront.io.</p><span class="stack">Python, RL</span></a></li>
+        <li class="row"><a href="https://github.com/x3rdev/selectiveentityremoval"><h3>selectiveentityremoval</h3><p>Fabric performance mod giving fine-grained control over entity culling distances.</p><span class="stack">Java, Fabric</span></a></li>
+        <li class="row"><a href="https://github.com/x3rdev/send_file_p2p"><h3>send_file_p2p</h3><p>Low level peer-to-peer file transfer utility, open source.</p><span class="stack">C++</span></a></li>
+      </ul>
+    </section>
+
+    <section id="about">
+      <div class="head"><h2>About</h2><span class="rule"></span></div>
+      <div class="about">
+        <div>
+          <p>I study computer science at the Paul G. Allen School at the University of Washington, and I'm interning on the AWS Lambda team working on Kafka pollers.</p>
+          <p>I like building applications and systems close to the metal: game mods, networking tools, and reinforcement learning agents. Long term I'm aiming at neural engineering.</p>
+        </div>
+        <dl>
+          <dt>Languages</dt><dd>Java, C++, C, Python, JavaScript, TypeScript</dd>
+          <dt>Systems</dt><dd>AWS, Kafka, Docker, networking</dd>
+          <dt>Hardware</dt><dd>ESP32, embedded C</dd>
+          <dt>Modding</dt><dd>NeoForge, Fabric</dd>
+        </dl>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <div class="head"><h2>Contact</h2><span class="rule"></span></div>
+      <a class="mail holo" href="mailto:you@example.com">you@example.com</a>
+      <div class="links"><a href="https://github.com/x3rdev">GitHub</a><a href="https://www.linkedin.com/in/nicolae-ungur/">LinkedIn</a><a href="#">Resume</a></div>
+    </section>
+  </main>
+  <footer>© 2026 Nicolae Ungur</footer>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
