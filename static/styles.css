@@ -42,11 +42,12 @@ a:focus-visible{outline:2px solid var(--h2);outline-offset:4px;border-radius:4px
 
 .wrap{position:relative;z-index:1;max-width:1040px;margin:0 auto;padding:0 1.5rem}
 
-nav{display:flex;justify-content:space-between;align-items:center;padding:1.75rem 0}
+nav{display:flex;justify-content:flex-end;align-items:center;padding:1.75rem 0}
 .mark{font-weight:500;text-decoration:none}
-nav ul{display:flex;gap:1.75rem;list-style:none;margin:0;padding:0}
-nav ul a{text-decoration:none;color:var(--muted)}
+nav ul{display:flex;gap:1.1rem;list-style:none;margin:0;padding:0;align-items:center}
+nav ul a{display:block;color:var(--muted);line-height:0;transition:color .2s}
 nav ul a:hover{color:var(--ink)}
+nav ul svg{width:19px;height:19px;fill:currentColor;display:block}
 
 /* iridescent text: a light band that sits wherever the cursor is */
 .holo{
@@ -115,9 +116,9 @@ h2{font-weight:300;font-size:clamp(1.8rem,4vw,2.5rem);letter-spacing:-.02em;marg
 footer{padding:4rem 0 2.5rem;color:var(--muted);font-size:.9rem}
 
 @media (max-width:760px){
+  nav ul svg{width:21px;height:21px}
   .row a{grid-template-columns:1fr;gap:.4rem}
   .row .stack{text-align:left}
   .about{grid-template-columns:1fr}
-  nav ul{gap:1.1rem}
   section{padding:3.5rem 0}
 }
