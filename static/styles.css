@@ -33,13 +33,6 @@ a{color:inherit}
 a:focus-visible{outline:2px solid var(--h2);outline-offset:4px;border-radius:4px}
 ::selection{background:var(--h1);color:var(--bg)}
 
-/* scroll progress */
-.progress{
-  position:fixed;left:0;top:0;height:2px;width:100%;z-index:5;transform-origin:0 50%;
-  transform:scaleX(var(--sy));
-  background:linear-gradient(90deg,var(--h1),var(--h2),var(--h3),var(--h4));
-}
-
 .wrap{position:relative;z-index:1;max-width:1040px;margin:0 auto;padding:0 1.5rem}
 
 nav{display:flex;justify-content:flex-end;align-items:center;padding:1.75rem 0}
@@ -74,10 +67,16 @@ nav ul svg{width:19px;height:19px;fill:currentColor;display:block}
 }
 #nameText span{display:block}
 #nameText::selection,#nameText span::selection{background:color-mix(in srgb,var(--h1) 22%,transparent);color:transparent}
-.hero p{color:var(--muted);font-size:clamp(1.1rem,2vw,1.3rem);max-width:30rem;margin:2.25rem 0 0}
+.hero p{color:var(--ink);font-size:clamp(1.1rem,2vw,1.3rem);max-width:none;margin:2.25rem 0 0;text-wrap:pretty}
+.interests{list-style:none;margin:1.75rem 0 0;padding:0;display:grid;gap:.55rem}
+.interests li{display:flex;align-items:center;gap:.75rem;color:var(--muted);font-size:1.05rem}
+.interests li::before{
+  content:"";flex:none;width:6px;height:6px;border-radius:50%;
+  background:linear-gradient(135deg,var(--h1),var(--h2),var(--h3));
+}
 
 section{padding:5rem 0}
-.head{display:flex;align-items:baseline;gap:1.5rem;margin:0 0 2.5rem}
+.head{display:flex;align-items:center;gap:1.5rem;margin:0 0 2.5rem}
 h2{font-weight:300;font-size:clamp(1.8rem,4vw,2.5rem);letter-spacing:-.02em;margin:0;white-space:nowrap}
 /* line draws with scroll position, not time */
 .rule{flex:1;height:1px;background:var(--line);position:relative;overflow:hidden}
@@ -89,16 +88,20 @@ h2{font-weight:300;font-size:clamp(1.8rem,4vw,2.5rem);letter-spacing:-.02em;marg
 /* work rows */
 .rows{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
 .row{border-bottom:1px solid var(--line)}
-.row a{
-  display:grid;grid-template-columns:1.1fr 1.6fr auto;gap:2rem;align-items:baseline;
+.row a,.row .entry{
+  display:grid;grid-template-columns:1fr auto;column-gap:2rem;align-items:baseline;
   padding:1.6rem 0;text-decoration:none;position:relative;z-index:1;
 }
 .row h3{margin:0;font-weight:400;font-size:1.4rem;letter-spacing:-.01em}
+.title{grid-column:1;display:flex;align-items:baseline;gap:.7rem;flex-wrap:wrap}
+.repo{display:inline-flex;align-items:baseline;gap:.25rem;color:var(--muted);font-size:.85rem}
+.repo span{margin-right:.6rem}
+.repo .ico{width:.8em;height:.8em;fill:currentColor;vertical-align:-.02em}
 .row:hover h3,.row:focus-within h3{
   background:linear-gradient(90deg,var(--h1),var(--h2),var(--h3));-webkit-background-clip:text;background-clip:text;color:transparent;
 }
-.row p{margin:0;color:var(--muted);max-width:30rem}
-.row .stack{color:var(--muted);font-size:.9rem;text-align:right;white-space:nowrap}
+.row p{grid-column:1/-1;margin:.4rem 0 0;color:var(--muted);max-width:none}
+.row .stack{grid-column:2;grid-row:1;color:var(--ink);font-size:.9rem;text-align:right;white-space:nowrap}
 
 .about{display:grid;grid-template-columns:1.5fr 1fr;gap:3rem}
 .about p{margin:0 0 1.1rem;max-width:36rem}
@@ -106,19 +109,23 @@ h2{font-weight:300;font-size:clamp(1.8rem,4vw,2.5rem);letter-spacing:-.02em;marg
 .about dt{color:var(--muted)}
 .about dd{margin:0}
 
+.contact{text-align:center}
 .contact .mail{
-  display:inline-block;font-weight:200;font-size:clamp(2rem,7vw,4.6rem);letter-spacing:-.035em;
-  text-decoration:none;word-break:break-word;line-height:1.1;
+  display:inline-flex;align-items:center;
+  padding:.7rem 1.2rem;border:1px solid var(--line);border-radius:999px;
+  color:var(--ink);font-size:1.05rem;text-decoration:none;
+  transition:border-color .25s, background-color .25s;
 }
-.links{display:flex;gap:1.75rem;margin-top:2rem}
+.contact .mail:hover{border-color:var(--h2);background:color-mix(in srgb,var(--h2) 7%,transparent)}
+.links{display:flex;gap:1.75rem;margin-top:1.5rem;justify-content:center}
 .links a{color:var(--muted);text-decoration:none}
 .links a:hover{color:var(--ink)}
 footer{padding:4rem 0 2.5rem;color:var(--muted);font-size:.9rem}
 
 @media (max-width:760px){
   nav ul svg{width:21px;height:21px}
-  .row a{grid-template-columns:1fr;gap:.4rem}
-  .row .stack{text-align:left}
+  .row a,.row .entry{grid-template-columns:1fr;gap:.2rem}
+  .row .stack{grid-column:1;grid-row:auto;text-align:left;margin-top:.4rem}
   .about{grid-template-columns:1fr}
   section{padding:3.5rem 0}
 }

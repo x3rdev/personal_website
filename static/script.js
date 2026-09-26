@@ -1,24 +1,18 @@
 (() => {
   const root = document.documentElement;
-  const fine = matchMedia('(pointer: fine)').matches;
-  if (fine){
+  if (matchMedia('(pointer: fine)').matches){
     addEventListener('pointermove', e => {
       root.style.setProperty('--mx', (e.clientX / innerWidth * 100).toFixed(1));
     }, {passive:true});
+  } else {
+    const onScroll = () => {
+      const max = document.documentElement.scrollHeight - innerHeight;
+      const sy = max > 0 ? scrollY / max : 0;
+      root.style.setProperty('--mx', (15 + sy * 70).toFixed(1));
+    };
+    addEventListener('scroll', onScroll, {passive:true});
+    onScroll();
   }
-
-  /* scroll: progress bar, section rules, and (on touch) the text light band */
-  let ticking = false;
-  function onScroll(){
-    const max = document.documentElement.scrollHeight - innerHeight;
-    const sy = max > 0 ? scrollY / max : 0;
-    root.style.setProperty('--sy', sy.toFixed(4));
-    if (!fine) root.style.setProperty('--mx', (15 + sy * 70).toFixed(1));
-    ticking = false;
-  }
-  addEventListener('scroll', () => { if (!ticking){ ticking = true; requestAnimationFrame(onScroll); } }, {passive:true});
-  addEventListener('resize', onScroll);
-  onScroll();
 })();
 
 /* ASCII name: sampled from real type, then drawn as terminal characters */
